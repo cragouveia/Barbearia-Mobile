@@ -41,7 +41,8 @@ public class AgendamentoDAO extends SQLiteOpenHelper {
                 "fotoAntes text," +
                 "fotoDepois text," +
                 "dataHora integer," +
-                "procedimento text);";
+                "procedimento text," +
+                "novo integer);";
         db.execSQL(ddlCliente);
     }
 
@@ -53,12 +54,16 @@ public class AgendamentoDAO extends SQLiteOpenHelper {
     private ContentValues getValues(Agendamento agendamento) {
         ContentValues values = new ContentValues();
 
+        if (agendamento.isImporting()) {
+            values.put("id", agendamento.getId());
+        }
         values.put("nome", agendamento.getNome());
         values.put("telefone", agendamento.getTelefone());
         values.put("fotoAntes", agendamento.getFotoAntes());
         values.put("fotoDepois", agendamento.getFotoDepois());
         values.put("procedimento", agendamento.getProcedimento().name());
         values.put("dataHora", dateFormat.format(agendamento.getDataHora().getTime()));
+        values.put("novo", agendamento.isNovo() ? 1 : 0);
         return values;
     }
 
@@ -105,8 +110,8 @@ public class AgendamentoDAO extends SQLiteOpenHelper {
         dataHoraAnterior.setTime(agendamento.getDataHora().getTime());
         dataHoraAnterior.add(Calendar.MINUTE, -30);
         Calendar dataHoraPosterior = Calendar.getInstance();
-        dataHoraAnterior.setTime(agendamento.getDataHora().getTime());
-        dataHoraAnterior.add(Calendar.MINUTE, 30);
+        dataHoraPosterior.setTime(agendamento.getDataHora().getTime());
+        dataHoraPosterior.add(Calendar.MINUTE, 30);
 
         String[] args = {
                 String.valueOf(agendamento.getId()),
@@ -142,6 +147,8 @@ public class AgendamentoDAO extends SQLiteOpenHelper {
         }
         agendamento.setDataHora(calendar);
         agendamento.setProcedimento(Procedimento.valueOf(c.getString(c.getColumnIndex("procedimento"))));
+        agendamento.setNovo(c.getInt(c.getColumnIndex("novo")) == 1);
+        agendamento.setImporting(false);
         return agendamento;
     }
 }

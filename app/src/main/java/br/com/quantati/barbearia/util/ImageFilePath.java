@@ -1,5 +1,8 @@
-package br.com.quantati.barbearia;
+package br.com.quantati.barbearia.util;
 
+/**
+ * Created by carlos on 6/3/15.
+ */
 import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
@@ -8,10 +11,6 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-
-/**
- * Created by carlos on 29/05/17.
- */
 
 public class ImageFilePath {
 
@@ -91,3 +90,4 @@ public class ImageFilePath {
         return "com.google.android.apps.photos.content".equals(uri.getAuthority());
     }
 }
+

@@ -1,5 +1,7 @@
 package br.com.quantati.barbearia.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 import java.util.Calendar;
 
@@ -10,12 +12,23 @@ import java.util.Calendar;
 public class Agendamento implements Serializable{
 
     private long id;
+    private String chave;
     private String fotoAntes;
     private String fotoDepois;
     private String nome;
     private String telefone;
     private Calendar dataHora;
     private Procedimento procedimento;
+    @JsonIgnore
+    private boolean novo;
+    @JsonIgnore
+    private boolean importing;
+
+    public Agendamento() {
+        novo = false;
+        importing = false;
+        fotoAntes = fotoDepois = "";
+    }
 
     public long getId() {
         return id;
@@ -23,6 +36,14 @@ public class Agendamento implements Serializable{
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getChave() {
+        return chave;
+    }
+
+    public void setChave(String chave) {
+        this.chave = chave;
     }
 
     public String getFotoAntes() {
@@ -73,4 +94,19 @@ public class Agendamento implements Serializable{
         this.procedimento = procedimento;
     }
 
+    public boolean isNovo() {
+        return novo;
+    }
+
+    public void setNovo(boolean novo) {
+        this.novo = novo;
+    }
+
+    public boolean isImporting() {
+        return importing;
+    }
+
+    public void setImporting(boolean importing) {
+        this.importing = importing;
+    }
 }

@@ -3,98 +3,97 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="235dp">
-        <android.support.v4.view.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:id="@+id/foto"
-            android:background="#00A8EC"
-            android:src="@drawable/person"
-            />
-
-        <Button
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:id="@+id/formFotoButton"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/formulariofotobutton"
-            android:elevation="5dp"
-            android:gravity="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            />
-    </RelativeLayout>
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nome:"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edtNome"/>
-            </LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-            <LinearLayout
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="200dp">
+            <com.daimajia.slider.library.SliderLayout
+                android:id="@+id/sliderFotos"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Telefone:"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edtTelefone"/>
-            </LinearLayout>
+                android:layout_height="180dp"
+                android:src="@drawable/person"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Data/Hora:"/>
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/edtDataHora"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Procedimento:"/>
-                <Spinner
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/spinnerProcedimento"/>
-            </LinearLayout>
+            <com.daimajia.slider.library.Indicators.PagerIndicator
+                android:id="@+id/custom_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
 
             <Button
+                android:id="@+id/formFotoButton"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="5dp"
+                android:layout_marginRight="20dp"
+                android:background="@drawable/formulario_foto_button"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"/>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <br.com.quantati.barbearia.component.UbuntuBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nome:"/>
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/btnSalvarAgendamento"
-                android:text="Agendar"/>
+                android:id="@+id/edtNome"/>
         </LinearLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <br.com.quantati.barbearia.component.UbuntuBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefone:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtTelefone"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <br.com.quantati.barbearia.component.UbuntuBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data/Hora:"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/edtDataHora"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <br.com.quantati.barbearia.component.UbuntuBoldTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Procedimento:"/>
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinnerProcedimento"/>
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnSalvarAgendamento"
+            android:text="Agendar"/>
+
+    </LinearLayout>
 </LinearLayout>

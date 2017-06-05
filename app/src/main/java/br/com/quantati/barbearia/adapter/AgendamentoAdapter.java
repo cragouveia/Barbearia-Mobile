@@ -12,9 +12,9 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import br.com.quantati.barbearia.ImageCircle;
 import br.com.quantati.barbearia.R;
 import br.com.quantati.barbearia.model.Agendamento;
+import br.com.quantati.barbearia.util.ImageUtil;
 
 
 /**
@@ -65,13 +65,13 @@ public class AgendamentoAdapter extends BaseAdapter {
         txtDataHora.setText(format.format(agendamento.getDataHora().getTime()));
 
         Bitmap foto;
-        if(agendamento.getFotoAntes() != null){
+        if(!agendamento.getFotoAntes().isEmpty()){
             foto = BitmapFactory.decodeFile(agendamento.getFotoAntes());
         } else {
             foto = BitmapFactory.decodeResource(activity.getResources(), R.mipmap.ic_no_image);
         }
 
-        fotoCliente.setImageBitmap(ImageCircle.crop(foto));
+        fotoCliente.setImageBitmap(ImageUtil.crocpCircle(foto));
         return layout;
     }
 }
