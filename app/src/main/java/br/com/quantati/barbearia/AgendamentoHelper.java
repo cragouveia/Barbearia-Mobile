@@ -66,6 +66,7 @@ public class AgendamentoHelper {
         this.activity = activity;
         procedimento = Arrays.asList(Procedimento.values());
         adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, procedimento);
+
         sliderFotos = (SliderLayout) activity.findViewById(R.id.sliderFotos);
         sliderFotos.setDuration(DELAY);
         sliderFotos.setPresetTransformer(SliderLayout.Transformer.Accordion);

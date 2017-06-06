@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.Calendar;
 
+import br.com.quantati.barbearia.util.ImageUtil;
+
 /**
  * Created by carlos on 29/05/17.
  */
@@ -19,6 +21,8 @@ public class Agendamento implements Serializable{
     private String telefone;
     private Calendar dataHora;
     private Procedimento procedimento;
+    private String imageAntes;
+    private String imageDepois;
     @JsonIgnore
     private boolean novo;
     @JsonIgnore
@@ -108,5 +112,28 @@ public class Agendamento implements Serializable{
 
     public void setImporting(boolean importing) {
         this.importing = importing;
+    }
+
+
+    public String getImageAntes() {
+        if (!importing && !this.fotoAntes.isEmpty()) {
+            imageAntes = ImageUtil.bitmapToBase64(fotoAntes);
+        }
+        return imageAntes;
+    }
+
+    public void setImageAntes(String imageAntes) {
+        this.imageAntes = imageAntes;
+    }
+
+    public String getImageDepois() {
+        if (!importing && !this.fotoDepois.isEmpty()) {
+            imageDepois = ImageUtil.bitmapToBase64(fotoDepois);
+        }
+        return imageDepois;
+    }
+
+    public void setImageDepois(String imageDepois) {
+        this.imageDepois = imageDepois;
     }
 }
