@@ -26,7 +26,10 @@ import br.com.quantati.barbearia.util.ImageUtil;
  * Created by Carlos on 29/05/2017.
  */
 
-public class AgendamentoActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener, ViewPagerEx.OnPageChangeListener {
+public class AgendamentoActivity extends AppCompatActivity
+        implements DatePickerDialog.OnDateSetListener,
+        TimePickerDialog.OnTimeSetListener,
+        ViewPagerEx.OnPageChangeListener {
 
     private AgendamentoHelper helper;
     private static final int TIRAR_FOTO = 1;

@@ -109,6 +109,7 @@ public class AgendamentoDAO extends SQLiteOpenHelper {
         Calendar dataHoraAnterior = Calendar.getInstance();
         dataHoraAnterior.setTime(agendamento.getDataHora().getTime());
         dataHoraAnterior.add(Calendar.MINUTE, -30);
+
         Calendar dataHoraPosterior = Calendar.getInstance();
         dataHoraPosterior.setTime(agendamento.getDataHora().getTime());
         dataHoraPosterior.add(Calendar.MINUTE, 30);
